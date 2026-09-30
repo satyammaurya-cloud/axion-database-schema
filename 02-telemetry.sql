@@ -1,13 +1,10 @@
--- ============================================
--- Axion v1 - Database
--- ============================================
-
+-- Step 1 — Create the Database
+-- ============================================   
 CREATE DATABASE axion_db;
 
--- ============================================
--- Axion v1 - Telemetry Table
--- ============================================
 
+-- Step 2 — Connect to the Database and create table
+-- ============================================   
 CREATE TABLE telemetry (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
 
@@ -24,9 +21,19 @@ CREATE TABLE telemetry (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Step 3 — To set device is as indexes
+-- ============================================   
+
 -- Indexes for telemetry queries
 CREATE INDEX idx_telemetry_device_id
 ON telemetry(device_id);
 
 CREATE INDEX idx_telemetry_timestamp
 ON telemetry(timestamp DESC);
+
+
+-- Step 4 — Verify the Data
+-- ============================================   
+SELECT * FROM telemetry;
+
+SELECT COUNT(*) FROM telemetry;
